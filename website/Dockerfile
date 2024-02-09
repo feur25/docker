@@ -1,6 +1,6 @@
 FROM php:apache
 
-MAINTAINER Quentin feur09@gmail.com
+LABEL maintainer="feur25 <feur09@gmail.com>"
 
 RUN apt-get update && apt-get install -y \
     vim \
