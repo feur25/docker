@@ -5,9 +5,7 @@ LABEL maintainer="feur25 <feur09@5gmail.com>"
 COPY . /app
 WORKDIR /app
 
-RUN apt-get update -y && \
-    apt-get install -y python-dev python3-dev libsasl2-dev libldap2-dev libssl-dev && \
-    pip install flask==1.1.2 flask_httpauth==4.1.0 flask_simpleldap python-dotenv==0.14.0
+RUN apt-get update -y
 
 VOLUME /data
 
