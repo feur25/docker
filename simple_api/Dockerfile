@@ -1,18 +1,16 @@
 FROM python:2.7-stretch
 
-RUN apt-get update && apt-get install -y wget
+LABEL maintainer="feur25 <feur09@gmail.com>"
 
-RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list
+COPY . /app
+WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    python-dev \
-    python3-dev \
-    libsasl2-dev \
-    libldap2-dev \
-    libssl-dev
+RUN apt-get update -y
+RUN apt-get install -y python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev \
+    && pip install flask==1.1.2 flask_httpauth==4.1.0 flask_simpleldap python-dotenv==0.14.0
 
-RUN pip install flask==1.1.2 flask_httpauth==4.1.0 flask_simpleldap python-dotenv==0.14.0
+VOLUME /data
+
 
 EXPOSE 5000
 
